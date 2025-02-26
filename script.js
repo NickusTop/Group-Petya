@@ -10,24 +10,34 @@ let index = 0;
         // Устанавливаем выбранное значение из localStorage при загрузке страницы
   // Устанавливаем выбранное значение из localStorage при загрузке страницы
   // Устанавливаем выбранное значение из sessionStorage при загрузке страницы
-  window.onload = function() {
-    const savedLanguage = sessionStorage.getItem('selectedLanguage');
-    if (savedLanguage) {
-      document.getElementById('languageSelect').value = savedLanguage;
+  // Функция для определения текущего языка по URL
+  function setLanguage() {
+    const currentPage = window.location.pathname; // Получаем путь текущей страницы
+    const languageSelect = document.getElementById('languageSelect');
+    
+    // Проверяем, какой язык используется в имени файла и выбираем соответствующий option
+    if (currentPage.includes('index-ru.html')) {
+      languageSelect.value = 'ru';
+    } else if (currentPage.includes('index-ua.html')) {
+      languageSelect.value = 'es';
+    } else {
+      languageSelect.value = 'en';
     }
-  };
+  }
 
+  // Вызываем функцию при загрузке страницы
+  window.onload = setLanguage;
+
+  // Добавляем обработчик изменения языка
   document.getElementById('languageSelect').addEventListener('change', function() {
     const language = this.value;
-    // Сохраняем выбранный язык в sessionStorage
-    sessionStorage.setItem('selectedLanguage', language);
-    
+
     if (language === 'en') {
-      window.location.href = 'index.html'; // замените на нужный файл
+      window.location.href = 'index.html';
     } else if (language === 'ru') {
-      window.location.href = 'index-ru.html'; // замените на нужный файл
+      window.location.href = 'index-ru.html';
     } else if (language === 'es') {
-      window.location.href = 'index-ua.html'; // замените на нужный файл
+      window.location.href = 'index-ua.html';
     }
   });
           
