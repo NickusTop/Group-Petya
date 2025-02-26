@@ -8,6 +8,7 @@ let index = 0;
         }
         setInterval(nextSlide, 5000);
         // Устанавливаем выбранное значение из localStorage при загрузке страницы
+  // Устанавливаем выбранное значение из localStorage при загрузке страницы
   window.onload = function() {
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {
