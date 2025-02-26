@@ -9,8 +9,9 @@ let index = 0;
         setInterval(nextSlide, 5000);
         // Устанавливаем выбранное значение из localStorage при загрузке страницы
   // Устанавливаем выбранное значение из localStorage при загрузке страницы
+  // Устанавливаем выбранное значение из sessionStorage при загрузке страницы
   window.onload = function() {
-    const savedLanguage = localStorage.getItem('selectedLanguage');
+    const savedLanguage = sessionStorage.getItem('selectedLanguage');
     if (savedLanguage) {
       document.getElementById('languageSelect').value = savedLanguage;
     }
@@ -18,8 +19,8 @@ let index = 0;
 
   document.getElementById('languageSelect').addEventListener('change', function() {
     const language = this.value;
-    // Сохраняем выбранный язык в localStorage
-    localStorage.setItem('selectedLanguage', language);
+    // Сохраняем выбранный язык в sessionStorage
+    sessionStorage.setItem('selectedLanguage', language);
     
     if (language === 'en') {
       window.location.href = 'index.html'; // замените на нужный файл
